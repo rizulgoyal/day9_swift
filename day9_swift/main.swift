@@ -15,6 +15,12 @@ print("Hello, World!")
 do {
     let f1 : Faculty =  try Faculty(facultyID: 1, facultyName: "Rizul Goyal", salary: 1002.00)
    f1.PrintData()
+    try f1.setName(newName: "Harpreet Singh")
+    try f1.setSalary(newSalary: 1500)
+    f1.PrintData()
+    let f2 : Faculty =  try Faculty(facultyID: 2, facultyName: "Anmol Sharma", salary: 1602.00)
+    f2.PrintData()
+
 }
 catch FacultyError.invalidFacultyID(let facultyID)
 {

@@ -20,15 +20,6 @@ enum FacultyError:Error
 class Faculty
 {
     var facultyID : Int
-    var facultyIDSet : Int
-    {
-        get{
-            return facultyID
-        }
-        set{
-            self.facultyIDSet=facultyID
-        }
-    }
     var facultyName: String
     var salary: Double
     
@@ -50,6 +41,40 @@ class Faculty
         self.salary=salary
         
         
+    }
+    
+    func setSalary(newSalary : Double) throws
+    {
+        if newSalary <= 1000
+        {
+            throw FacultyError.invalidSalary(salary: newSalary)
+        }
+        self.salary=newSalary
+        
+    }
+    
+    func setName(newName: String) throws
+    {
+        print("******  START ******")
+        do{
+            if newName.count < 10
+            {
+                throw FacultyError.invalidFacultyName(facultyName: newName)
+
+            }
+            self.facultyName=newName
+            print("Set Name ")
+
+        }
+        catch FacultyError.invalidFacultyName(let facultyName)
+        {
+            print("Invalid Faculty Name : \(facultyName)")
+
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        print("***** END ******")
     }
     
     
